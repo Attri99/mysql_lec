@@ -19,6 +19,15 @@ location VARCHAR(50) COMMENT '위치',
 CONSTRAINT pk_dept PRIMARY KEY(dept_id)
 ) ENGINE = INNODB COMMENT '부서 테이블';
 
+CREATE TABLE IF NOT EXISTS tbl_project
+(
+proj_id INT NOT NULL AUTO_INCREMENT COMMENT '프로젝트아이디',
+proj_name VARCHAR(30) COMMENT '프로젝트명',
+begin_date DATE COMMENT '시작일자',
+end_date DATE COMMENT '종료일자',
+CONSTRAINT pk_proj PRIMARY KEY(proj_id)
+) ENGINE=INNODB COMMENT '프로젝트 테이블';
+
 CREATE TABLE IF NOT EXISTS tbl_employee
 (
     emp_id  INT NOT NULL AUTO_INCREMENT COMMENT '사원아이디',
@@ -30,16 +39,8 @@ CREATE TABLE IF NOT EXISTS tbl_employee
     salary INT COMMENT '연봉',
     CONSTRAINT pk_emp PRIMARY KEY(emp_id),
     CONSTRAINT fk_dept_emp FOREIGN KEY(dept_id) REFERENCES tbl_department(dept_id)
-) ENGINE=INNODB COMMENT '사원 테이블';
-
-CREATE TABLE IF NOT EXISTS tbl_project
-(
-proj_id INT NOT NULL AUTO_INCREMENT COMMENT '프로젝트아이디',
-proj_name VARCHAR(30) COMMENT '프로젝트명',
-begin_date DATE COMMENT '시작일자',
-end_date DATE COMMENT '종료일자',
-CONSTRAINT pk_proj PRIMARY KEY(proj_id)
-) ENGINE=INNODB COMMENT '프로젝트 테이블'; 
+) ENGINE=INNODB COMMENT '사원';
+ 
 
 CREATE TABLE IF NOT EXISTS tbl_proj_emp
 (
