@@ -1,0 +1,13 @@
+User
+ -root/root(관리자)
+ - greenin/greenit (사용자)
+- CREATE USER
+- GRANT
+Database (Schema)
+
+SQL(쿼리문)
+ -DDL : 테이블, 사용자 등의 추가/변경/삭제
+ - DML : 행 추가/변경/삭제
+ - DQL : 조회(가장 많이 사용되는 쿼리문)
+
+D:\dev_lec\workspaces\mysql_lec\Ex01.고객계좌정보.sql
