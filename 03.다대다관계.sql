@@ -15,22 +15,24 @@ DROP TABLE IF EXISTS tbl_class;
 CREATE TABLE IF NOT EXISTS tbl_student
 (
 stud_id CHAR(5) NOT NULL COMMENT '학번',
-stud_name VARCHAR(20) NOT NULL COMMENT '성명',
-age TINYINT NOT NULL COMMENT '나이'
-)ENGINE=INNODB COMMENT '학생 테이블';
+stud_name VARCHAR(20) COMMENT '성명',
+age     TINYINT NOT NULL COMMENT '나이',
+CONSTRAINT pk_student PRIMARY KEY(stud_id)
+)ENGINE=INNODB COMMENT '학생';
 
 CREATE TABLE IF NOT EXISTS tbl_class
 (
-class_code CHAR  NOT NULL PRIMARY KEY COMMENT '과목코드',
-class_name VARCHAR(5) NOT NULL COMMENT '과목명',
-prof_name VARCHAR(5) NOT NULL COMMENT '교수명'
+class_code CHAR(1) NOT NULL COMMENT '과목코드',
+class_name VARCHAR(10) NOT NULL COMMENT '과목명',
+prof_name VARCHAR(10) NOT NULL COMMENT '교수명',
+CONSTRAINT pk_class PRIMARY KEY (class_code)
 ) ENGINE=INNODB COMMENT '과목 테이블';
 
 CREATE TABLE IF NOT EXISTS tbl_register
 (
 student_id CHAR(5) NOT NULL COMMENT '학번',
 class_code CHAR(1) NOT NULL COMMENT '과목코드',
-CONSTRAINT pk_enroll PRIMARY KEY(stud_id, course_id),
-CONSTRAINT fk_student_enroll FOREIGN KEY(stud_id) PRIMARY KEY(student_id),
-CONSTRAINT fk_course_enroll FOREIGN KEY(course_id) REFERENCES
+CONSTRAINT pk_register PRIMARY KEY(student_id, class_code),
+CONSTRAINT fk_student_register FOREIGN KEY(student_id) REFERENCES tbl_student(stud_id),
+CONSTRAINT fk_course_register FOREIGN KEY(class_code) REFERENCES tbl_class(class_code)
 ) ENGINE=INNODB COMMENT '수강신청';
