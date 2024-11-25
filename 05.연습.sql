@@ -11,9 +11,9 @@ INSERT INTO tbl_department(dept_name, location) VALUES ('기획부', '서울');
 
 -- tbl_employee 의 첫번째 칼럼에는 NULL 값을 전달해서 emp_id 에는 NULL 값을 전달해서 emp_id 칼럼의 AUTO_INCREMENT 동작을 보장한다.
 INSERT INTO tbl_employee VALUES (NULL, 1, '구창민', '과장', 'M', '95-05-01', 5000000);
-INSERT INTO tbl_employee VALUES (NULL, 2, '김민서', '사원', 'M', '17-09-01', 2500000);
-INSERT INTO tbl_employee VALUES (NULL, 3, '이은영', '부장', 'M', '97-06-01', 5000000);
-INSERT INTO tbl_employee VALUES (NULL, 4, '한성일', '과장', 'M', '94-06-01', 5000000);
+INSERT INTO tbl_employee VALUES (NULL, 1, '김민서', '사원', 'M', '17-09-01', 2500000);
+INSERT INTO tbl_employee VALUES (NULL, 2, '이은영', '부장', 'M', '97-06-01', 5000000);
+INSERT INTO tbl_employee VALUES (NULL, 2, '한성일', '과장', 'M', '94-06-01', 5000000);
 
 -- 영구적으로 저장
 COMMIT;
