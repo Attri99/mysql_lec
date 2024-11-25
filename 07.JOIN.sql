@@ -6,8 +6,7 @@ USE db_company;
 
 -- 1. 모든 사원의 부서번호, 부서명, 사원번호, 사원명 조회하기
 SELECT d.dept_id, e.dept_id, dept_name, emp_id, emp_name
-FROM tbl_department d CROSS JOIN tbl_employee e 
-ON d.dept_id = e.dept_id;
+FROM tbl_department d CROSS JOIN tbl_employee e;
 
 /* INNER JOIN */
 -- 두 테이블이 모두 가지고 있는 데이터를 조회할 때 사용.
@@ -16,7 +15,7 @@ ON d.dept_id = e.dept_id;
 -- 테이블 작성
 -- FROM "Drive Table" JOIN "Driven Table"
 -- 1 : M 관계를 유지하면서 FROM에 PK를 가지고 있는 Table을 적어준다.
--- "Drive Table" : 조인을 주동으로 하는 테이블. 관계 상
+-- "Drive Table" : 조인을 주동으로 하는 테이블. 관계 상 PK를 가진 테이블을 사용 (행 : ROW 적은 테이블 사용)
 -- ON 절에서도 "Drive Table"의 칼럼을 먼저 작성
 
 
@@ -27,8 +26,8 @@ FROM tbl_department d INNER JOIN tbl_employee e
     
 -- 3. 대구에 근무하는 사원 조회하기
 SELECT emp_id, e.dept_id, emp_name, position, gender, hire_date
-From tbl_department d INNER JOIN tbl_employee e
-ON d.dept_id = e.dept_id
+ From tbl_department d INNER JOIN tbl_employee e
+ ON d.dept_id = e.dept_id
 Where location = '대구';
 
 -- 4. 지역별 근무하는 사원 수 조회하기
@@ -67,8 +66,8 @@ SELECT menu_name, category_name
 
 -- 8. 카테고리 이름, 상위 카테고리 이름 조회하기.
 
-SELECT a.category_code AS 카테고리 b.category_name AS e
-    FROM tbl_category a INNER JOIN tbl_category_b
+SELECT a.category_name AS 카테고리, b.category_name AS 상위카테고리
+    FROM tbl_category a INNER JOIN tbl_category b
     ON a.ref_category_code = b.category_code
 WHERE a.ref_category_code IS NOT NULL;
 
