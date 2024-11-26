@@ -73,7 +73,7 @@ SELECT emp_id, dept_id, emp_name, position, gender, hire_date
 FROM tbl_employee
 WHERE emp_name LIKE CONCAT('%', '민', '%');
 
--- 14. (db_menu 스키마) 상위카테고릐코드가 없는 카테고리 조회하기
+-- 14. (db_menu 스키마) 상위카테고리코드가 없는 카테고리 조회하기
 USE db_practice;
 SELECT category_code,  category_name, ref_category_code
 FROM tbl_category
