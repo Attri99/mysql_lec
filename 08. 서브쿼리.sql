@@ -36,10 +36,15 @@ WHERE
     emp_id = 1002;
     
 /* 인라인 뷰 : FROM 절에서 사용. 테이블 형식의 결과 반환 */
-    
+ 
+ -- 5. 부서별 급여 평균 중 가장 높은 급여 평균 조회하기
+ SELECT MAX(average)
+    FROM (SELECT AVG(salary) AS average
+            FROM tbl_employee
+            GROUP BY dept_id) tbl_average; -- 인라인 뷰(파생 테이블)는 반드시 별명이 필요함.
 
 /* 상관 서브쿼리 : 메인 쿼리가 서브 쿼리에 영향을 미치는 쿼리*/
--- . 전체 사원의 정보와 부서별 급여 평균 조회하기
+-- 5. 전체 사원의 정보와 부서별 급여 평균 조회하기
 SELECT 
       emp_id
     , dept_id
@@ -50,7 +55,7 @@ SELECT
         WHERE dept_id = e.dept_id) AS 부서급여평균
 FROM tbl_employee e;
 
--- . 모든 사원의 정보와 부서명 조회하기
+-- 6. 모든 사원의 정보와 부서명 조회하기
 SELECT
         emp_id
       , dept_id
@@ -64,7 +69,7 @@ SELECT
       , salary
 FROM tbl_employee e;
 
--- 4. (db_menu 스키마) 메뉴 가격이 카테고리별 평균 메뉴가격보다 높은 메뉴 조회하기
+-- 7. (db_menu 스키마) 메뉴 가격이 카테고리별 평균 메뉴가격보다 높은 메뉴 조회하기
 USE db_practice;         
 SELECT menu_code, menu_name, menu_price, category_code
 FROM tbl_menu m
